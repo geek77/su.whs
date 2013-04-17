@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">suwhswidgets</string>
+    <string name="title_activity_pin_box_view">Enter Passcode</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="enter_passcode">Enter passcode</string>
+	<string name="application_icon_txt">application icon</string>
+	<string name="rate_title">Rate</string>
+	<string name="rate_app_prompt">If you enjoy using</string>
+	<string name="rate_app_query">, please take a moment to rate it. Thanks for your support!</string>
+	<string name="rate_remind_later">Remind me later</string>
+	<string name="rate_no_thanks">No, thanks</string>
+</resources>
