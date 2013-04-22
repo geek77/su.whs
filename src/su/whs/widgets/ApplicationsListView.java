@@ -123,6 +123,7 @@ public class ApplicationsListView extends LinearLayout {
 	private List<ApplicationModel> installedApplications = null;
 	private String _title = null;
 	private boolean isSortCheckedFirst = false;
+	
 	private class LoadingPackagesListTask extends AsyncTask<Void,Void,List<ApplicationModel>> {
 
 		@Override
@@ -144,6 +145,10 @@ public class ApplicationsListView extends LinearLayout {
 		protected void onPostExecute(List<ApplicationModel> models) {
 			fillList(models);
 		}
+	}
+	
+	public ApplicationsListView(Context context) {
+		super(context,null);
 	}
 	
 	public ApplicationsListView(Context context, AttributeSet attrs) {

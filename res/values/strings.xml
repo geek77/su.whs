@@ -12,4 +12,5 @@
 	<string name="rate_app_query">, please take a moment to rate it. Thanks for your support!</string>
 	<string name="rate_remind_later">Remind me later</string>
 	<string name="rate_no_thanks">No, thanks</string>
+	<string name="application_incon_txt">Application Icon</string>
 </resources>
