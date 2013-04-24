@@ -1,4 +1,4 @@
-package su.whs.utils;
+package su.whs.prototypes;
 
 import su.whs.math.Complex;
 import su.whs.math.FFT;

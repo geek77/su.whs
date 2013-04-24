@@ -148,11 +148,15 @@ public class PreferenceEditText extends PreferenceItem {
 		dia.show();
 	}
 	
+	private void showInputDialog() {
+		// FIXME: implement
+	}
+	
 	public void showEditDialog() {
 		if (mIsPassword) 
 			showPasswordEditDialog();
 		else {
-			
+			showInputDialog();
 		}
 	}
 

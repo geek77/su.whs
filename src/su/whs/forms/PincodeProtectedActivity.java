@@ -2,8 +2,6 @@ package su.whs.forms;
 
 import su.whs.R;
 import su.whs.widgets.PincodeBox;
-import su.whs.widgets.PincodeBox.OnPincodeInputListener;
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
