@@ -12,6 +12,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <service
+            android:name="su.whs.aidl.HttpPollingService"
+            android:enabled="true"
+            android:process=":remote"
+            >
+            
+        </service>
     </application>
 
 </manifest>

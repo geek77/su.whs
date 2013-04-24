@@ -1,11 +1,12 @@
-package su.whs.net;
+package su.whs.aidl;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+
 public class NameValuePair implements org.apache.http.NameValuePair, Parcelable {
-	private static String mName;
-	private static String mValue;
+	private String mName;
+	private String mValue;
 	
 	@Override
 	public int describeContents() {
@@ -52,5 +53,9 @@ public class NameValuePair implements org.apache.http.NameValuePair, Parcelable 
 		}
 		
 	};
+	
+	public String toString() {
+		return getName() + "=\"" + getValue() + "\"";
+	}
 
 }
