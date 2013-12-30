@@ -8,7 +8,7 @@
     <attr name="checked" format="boolean"/>
   </declare-styleable>
   <declare-styleable name="whsInstalledApplicationsList">
-      <attr name="title" format="string"/>
+      <attr name="listTitle" format="string"/>
   </declare-styleable>
   <declare-styleable name="whsPreferencesView">
         <attr name="exampleString" format="string" />

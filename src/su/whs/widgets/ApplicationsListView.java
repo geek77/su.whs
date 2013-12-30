@@ -159,7 +159,7 @@ public class ApplicationsListView extends LinearLayout {
 		// loading starts		
 		TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.whsInstalledApplicationsList);
 		try {
-			_title = ta.getString(R.styleable.whsInstalledApplicationsList_title);
+			_title = ta.getString(R.styleable.whsInstalledApplicationsList_listTitle);
 		} finally {
 			ta.recycle();
 		}		

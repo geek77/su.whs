@@ -21,7 +21,7 @@ public class PinBoxActivity extends FragmentActivity implements PincodeBox.OnPin
 	}
 		
 	@Override 
-	protected void onCreate(Bundle savedInstanceState) {
+	protected final void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pincode_activity);
 		FragmentManager fm = getSupportFragmentManager();

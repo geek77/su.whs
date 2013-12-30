@@ -19,12 +19,18 @@ public class AsyncHttp {
 	
 	public interface OnHttpResponseListener {
 		void onHttpResponse(int resultCode, String resultBody);
+		void onRepeat();
+	};
+	
+	public interface OnStateChangeListener {
+		void onAsyncHttpStateChange(boolean enabled);
 	}
 	
 	private IHttpPollingService mHttp;
 	private boolean mServiceConnected = false;
 	private Object mLock = new Object();
 	private Context mContext;
+	private OnStateChangeListener mOnStateListener;
 	
 	private ServiceConnection mServiceConn = new ServiceConnection() {
 
@@ -35,6 +41,9 @@ public class AsyncHttp {
 			synchronized(mLock) {
 				mServiceConnected = true;
 			}
+			if (mServiceConnected && mOnStateListener != null) {
+				mOnStateListener.onAsyncHttpStateChange(true);
+			}
 		}
 
 		@Override
@@ -44,14 +53,26 @@ public class AsyncHttp {
 			synchronized(mLock) {
 				mServiceConnected = false;
 			}
+			if (mServiceConnected && mOnStateListener != null) {
+				mOnStateListener.onAsyncHttpStateChange(false);
+			}
 		}
 		
 	};
 	
+	public AsyncHttp(Context context, AsyncHttp.OnStateChangeListener oscl) {
+		init(context,oscl);
+	}
+	
 	public AsyncHttp(Context context) {
+		init(context,null);
+	}
+	
+	private void init(Context context, OnStateChangeListener oscl) {
 		Log.v(LOG_TAG,"try to bind to service");
 		context.bindService(new Intent(context,HttpPollingService.class), mServiceConn, Context.BIND_AUTO_CREATE);
 		mContext = context;
+		mOnStateListener = oscl;		
 	}
 	
 	public void onDestroy() {
@@ -102,6 +123,12 @@ public class AsyncHttp {
 					callback.onHttpResponse(resultCode, resultBody);
 					
 				}
+
+				@Override
+				public void onRepeat() throws RemoteException {
+					callback.onRepeat();
+					
+				}
 			});
 		} catch (RemoteException e) {
 			Log.e(LOG_TAG,"RemoteException: " + e);
@@ -121,6 +148,11 @@ public class AsyncHttp {
 				public void onHttpResponse(int resultCode, String resultBody)
 						throws RemoteException {
 					callback.onHttpResponse(resultCode, resultBody);
+				}
+
+				@Override
+				public void onRepeat() throws RemoteException {
+					callback.onRepeat();
 				}
 			});
 		} catch (RemoteException e) {

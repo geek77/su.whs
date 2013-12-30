@@ -41,7 +41,7 @@ public class EarBase {
 				return samples;
 			}
 			
-			private Complex[] computeFFT(int size) {
+			private Complex[] computeFFT() {
 				double[] data = new double[mBufferSize];
 				int BPS = 2; 
 				double AMP = 100.0;
@@ -79,7 +79,7 @@ public class EarBase {
 				do {
 					int samples = acquire();
 					if (samples>0) {
-						Complex[] fft = computeFFT(samples);
+						Complex[] fft = computeFFT();
 						overlap(fft);
 					}
 					try {
