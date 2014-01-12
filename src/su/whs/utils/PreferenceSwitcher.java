@@ -53,4 +53,8 @@ public class PreferenceSwitcher extends PreferenceItem {
 		super.store(spe);
 		spe.putBoolean(getName(), mChecked);
 	}
+	
+	public void setChecked(boolean checked) {
+		mChecked = checked;
+	}
 }

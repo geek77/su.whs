@@ -13,4 +13,16 @@
 	<string name="rate_remind_later">Remind me later</string>
 	<string name="rate_no_thanks">No, thanks</string>
 	<string name="application_incon_txt">Application Icon</string>
+	
+	<!-- numeric buttons -->
+	<string name="n0">0</string>
+	<string name="n1">1</string>
+	<string name="n2">2</string>
+	<string name="n3">3</string>
+	<string name="n4">4</string>
+	<string name="n5">5</string>
+	<string name="n6">6</string>
+	<string name="n7">7</string>
+	<string name="n8">8</string>
+	<string name="n9">9</string>
 </resources>

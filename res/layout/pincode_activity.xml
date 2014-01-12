@@ -3,13 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:gravity="center"
     android:orientation="vertical" >
 
     <fragment
         android:id="@+id/fragment1"
         android:name="su.whs.widgets.PincodeBox"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
         tools:layout="@layout/pinbox_widget" />
 
 </LinearLayout>

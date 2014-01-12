@@ -3,28 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/transparent_gray"
     android:gravity="center"
     android:minWidth="@dimen/pin_pad_min_width"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/pin_pad_title_padding"
-        android:text="@string/enter_passcode"
-        style="@style/OverlayText" />
+        android:gravity="center" >
 
-    <TextView
-        android:id="@+id/lockLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:drawablePadding="@dimen/app_list_item_margin"
-        android:textSize="@dimen/pincode_label_text_size"
-        style="@style/OverlayText" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/pin_pad_title_padding"
+            android:gravity="center_vertical"
+            android:text="@string/enter_passcode" />
+
+        <TextView
+            android:id="@+id/lockLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/pin_pad_title_padding"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:drawablePadding="@dimen/app_list_item_margin"
+            android:gravity="center_vertical"
+            android:text="LockDroid"
+            android:textSize="@dimen/pincode_label_text_size" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"

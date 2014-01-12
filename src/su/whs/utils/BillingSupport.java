@@ -55,6 +55,7 @@ public class BillingSupport {
 	
 	/* public */
 	public BillingSupport(Context context, BillingSupportListener l) {
+		mListener = l;
 		context.bindService(new 
 		        Intent("com.android.vending.billing.InAppBillingService.BIND"),
                 mServiceConn, Context.BIND_AUTO_CREATE);

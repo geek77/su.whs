@@ -3,6 +3,7 @@ package su.whs.widgets;
 import su.whs.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import android.text.Editable;
@@ -11,7 +12,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,7 +25,7 @@ public class PincodeBox extends android.support.v4.app.Fragment {
 	private View view;
 	private TextView passwordView;
 	private String expectedPassword = null;
-	private StringBuilder sb = new StringBuilder();
+	private TextView labelView;
 	private OnPincodeInputListener mOnInput = null;
 	
 	public interface OnPincodeInputListener {
@@ -51,8 +54,14 @@ public class PincodeBox extends android.support.v4.app.Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.pinbox_widget, container, false);
+		labelView = (TextView) view.findViewById(R.id.lockLabel);
 		initializeInput();
 		return view;
+	}
+	
+	public void setLabel(String text, Drawable icon) {
+		labelView.setText(text);
+		labelView.setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null);
 	}
 	
 	public void setOnPincodeInputListener(OnPincodeInputListener listener) {
@@ -124,37 +133,44 @@ public class PincodeBox extends android.support.v4.app.Fragment {
 			public void onClick(View v) {	enterDigit("9"); }});
 		
 		passwordView = (EditText)findViewById(R.id.pinBox);
-		passwordView.setInputType(InputType.TYPE_NULL); // disable soft input
+		passwordView.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				int inType = passwordView.getInputType(); // backup the input type
+			    passwordView.setInputType(InputType.TYPE_NULL); // disable soft input
+			    passwordView.onTouchEvent(event); // call native handler
+			    passwordView.setInputType(inType); // restore input type
+			    return true; // consume touch even
+			}
+		});
+		/* TODO: check for deprecation
 		passwordView.addTextChangedListener(new TextWatcher() {
-
 			@Override
 			public void afterTextChanged(Editable arg0) {
-				// TODO Auto-generated method stub
-				
+				// stub
 			}
 
 			@Override
 			public void beforeTextChanged(CharSequence arg0, int arg1,
 					int arg2, int arg3) {
-				// TODO Auto-generated method stub
-				
+				// stub
 			}
 
 			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+			public void onTextChanged(CharSequence seq, int arg1, int arg2,
 					int arg3) {
-				// TODO Auto-generated method stub
-				
+				if (seq.toString().equals(expectedPassword) && expectedPassword !=null && !expectedPassword.equals("")) {
+					if (mOnInput!=null) 
+						mOnInput.onCorrectPincode();
+				}
 			}
-			
-		});
+		}); */
 	}
 
 	private void enterDigit(String c) {
-		sb.append(c);
-		Log.i("INPUT", "entered digit '" + c + "' total sb='"+sb.toString()+"'");
+		Log.i("INPUT", "entered digit '" + c + "' total sb='"+passwordView.getText().toString()+"'");
 		passwordView.append(c);		
-		if (mOnInput != null && sb.toString().equals(expectedPassword) && expectedPassword != null && !expectedPassword.equals("")) { // entered password matches expecting
+		if (mOnInput != null && passwordView.getText().toString().equals(expectedPassword) && expectedPassword != null && !expectedPassword.equals("")) { // entered password matches expecting
 			mOnInput.onCorrectPincode();			
 		} else if (mOnInput != null) {
 			mOnInput.onIncorrectPincode();
@@ -162,10 +178,12 @@ public class PincodeBox extends android.support.v4.app.Fragment {
 	}
 
 	private void backspace() {
-		if (sb.length()>0) {
-			sb.deleteCharAt(sb.length()-1);
-			passwordView.setText(sb.toString());
-		}	
+		String text = passwordView.getText().toString();
+		if (text.length()>0) {
+			passwordView.setText(text.substring(0, text.length()-1));
+		} else {
+			passwordView.setText("");
+		}
 	}
 
 	// public dispatchKeyEvent
@@ -198,10 +216,6 @@ public class PincodeBox extends android.support.v4.app.Fragment {
 	// public clear
 	public void clear() {
 		this.passwordView.setText("");
-		if (this.sb==null)
-			this.sb = new StringBuilder();
-		if (sb.length()>0)
-			sb.delete(0, sb.length() - 1);
 	}
 	
 }

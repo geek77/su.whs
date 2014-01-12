@@ -11,8 +11,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 public class PreferenceCheckBox extends PreferenceSwitcher {
-	private boolean mHandleOnChecked = true;
-	
 	class Holder {
 		public TextView mTitle;
 		public TextView mSummary;
@@ -25,6 +23,7 @@ public class PreferenceCheckBox extends PreferenceSwitcher {
 		super(attr,parent);
 	}
 		
+	
 	public View getView(Context context, View convertView) {
 		View row = convertView;
 		final Holder h; 
@@ -59,7 +58,9 @@ public class PreferenceCheckBox extends PreferenceSwitcher {
 	}
 	
 	private void fillHolder(Holder h) {
-		h.mSummary.setText(getSummary());
-		h.mTitle.setText(getTitle());
+		String summary = getSummary();
+		String title = getTitle();
+		h.mSummary.setText(summary);
+		h.mTitle.setText(title);
 	}
 }

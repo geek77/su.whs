@@ -9,5 +9,8 @@
     <dimen name="pincode_fragment_width">280dp</dimen>
 	<dimen name="pincode_label_text_size">20dp</dimen>
 	<dimen name="del_button_bottom">5dp</dimen>
-
+	<dimen name="app_list_item_margin">4sp</dimen>
+	<dimen name="pin_pad_min_width">200dp</dimen>
+	<dimen name="pin_pad_title_padding">48dp</dimen>
+	<dimen name="pin_pad_button_font_size">32sp</dimen>
 </resources>

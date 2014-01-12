@@ -2,6 +2,10 @@ package su.whs.forms;
 
 import su.whs.R;
 import su.whs.widgets.PincodeBox;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -32,13 +36,23 @@ public class PincodeProtectedActivity extends FragmentActivity {
 		super.setContentView(R.layout.pincode_protected_layout);
 		mRootView = (FrameLayout) super.findViewById(R.id.pincodeProtectedRoot);		
 		FragmentManager fm = this.getSupportFragmentManager();
-		mPincodeBox = (PincodeBox) fm.findFragmentById(R.id.pincodeBox);		
+		mPincodeBox = (PincodeBox) fm.findFragmentById(R.id.pincodeBox);
+		PackageManager pm = getPackageManager();
+		ApplicationInfo ai;
+		try {
+			ai = pm.getApplicationInfo(getPackageName(), 0);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			return;
+		}
+		Drawable icon = pm.getApplicationIcon(ai);
+		mPincodeBox.setLabel(pm.getApplicationLabel(ai).toString(), icon);
 	}
 	
 	
 	public void setContentView(View v) {
 		mContentView = v;
-		mRootView.addView(v);
+		mRootView.addView(v,0);
 	}
 	
 	public void setContentView(int id) {
@@ -70,16 +84,16 @@ public class PincodeProtectedActivity extends FragmentActivity {
 	
 	protected void showPincodeBox() {
 		isContentHidden = true;
-		if (mContentView!=null)
-			mContentView.setVisibility(View.GONE);
+		// if (mContentView!=null)
+		// 	mContentView.setVisibility(View.GONE);
 		mPincodeBox.getView().setVisibility(View.VISIBLE);		
 	}
 	
 	protected void showContent() {
 		isContentHidden = false;
 		mPincodeBox.getView().setVisibility(View.GONE);
-		if (mContentView!=null) 
-			mContentView.setVisibility(View.VISIBLE);
+		// if (mContentView!=null) 
+		//	mContentView.setVisibility(View.VISIBLE);
 	}
 	
 	@Override
@@ -90,6 +104,9 @@ public class PincodeProtectedActivity extends FragmentActivity {
 		}
 		return super.dispatchKeyEvent(event);
 	}
-	
+
+	protected int getIcon() {
+		return android.R.drawable.sym_def_app_icon;
+	}
 	
 }
