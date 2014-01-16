@@ -1,6 +1,5 @@
 package su.whs.utils;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +40,7 @@ public class PreferenceItemsFactory {
 		while(eventType != XmlPullParser.END_DOCUMENT) {
 			switch(eventType) {
 			case XmlPullParser.START_TAG:
-				PreferenceItem i = readPreferenceItem(xml,eventType);
+				readPreferenceItem(xml,eventType);
 				break;
 				default:
 					break;
@@ -96,6 +95,14 @@ public class PreferenceItemsFactory {
 	
 	public void disable(String pref) {
 		
+	}
+
+	public Map<String,PreferenceItem> getItems() {
+		return mItems;
+	}
+
+	public void setItems(Map<String,PreferenceItem> mItems) {
+		this.mItems = mItems;
 	}
 
 }

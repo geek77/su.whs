@@ -102,4 +102,12 @@ public class PreferenceItem {
 		if (mOnDependencyStateListener!=null)
 			mOnDependencyStateListener.onPreferenceStateChanged(this);
 	}
+
+	public Map<String,String> getDependencies() {
+		return mDependencies;
+	}
+
+	public void setDependencies(Map<String,String> mDependencies) {
+		this.mDependencies = mDependencies;
+	}
 }
