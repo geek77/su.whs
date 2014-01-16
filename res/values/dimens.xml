@@ -1,8 +1,6 @@
 <resources>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="passcode_reset_padding">5dp</dimen>
     <dimen name="buttonFontSize">20dp</dimen>
     <dimen name="buttonFontSizeSmall">15dp</dimen>
@@ -13,4 +11,27 @@
 	<dimen name="pin_pad_min_width">200dp</dimen>
 	<dimen name="pin_pad_title_padding">48dp</dimen>
 	<dimen name="pin_pad_button_font_size">32sp</dimen>
+	
+	<dimen name="activity_horizontal_margin">0dp</dimen>
+    <dimen name="activity_vertical_margin">0dp</dimen>
+    
+    <dimen name="spTiny">12sp</dimen>
+    <dimen name="spSmall">16sp</dimen>
+    <dimen name="spMedium">18sp</dimen>
+    <dimen name="spBig">20sp</dimen>
+    <dimen name="spCap">16sp</dimen>
+    
+    <dimen name="settingsItemHeight">48dp</dimen>
+    <dimen name="buttonPaddings">8dp</dimen>
+    <dimen name="icon48dp">48dp</dimen>
+    <dimen name="titlePaddingVertical">4dp</dimen>
+    <dimen name="titleLogoHeight">24dp</dimen>
+    
+    <dimen name="mainBottomMargin">48dp</dimen>
+    <dimen name="height64dp">48dp</dimen>
+    
+	<dimen name="listItemHeight">72dp</dimen>
+	<dimen name="maxListItemNameLen">14pt</dimen>
+	
+	<dimen name="helpOverlayButtonMarginBottom">16dp</dimen>
 </resources>

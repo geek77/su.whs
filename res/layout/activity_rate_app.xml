@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/buttonPaddings"
+    android:layout_marginBottom="8dp"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".RateApp" >
+
+    <TextView
+        android:id="@+id/textSupportUS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:text="@string/rate_support_us"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/dark" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textSupportUS"
+        android:layout_centerHorizontal="true"
+        android:background="@color/dark"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <su.whs.widgets.ButtonR
+        android:id="@+id/likeBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height64dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/buttonPaddings"
+        android:background="@drawable/blink_blue"
+        android:text="@string/rate_ilike"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/spBig" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/likeBtn"
+        android:layout_centerHorizontal="true"
+        android:background="@color/dark" >
+    </LinearLayout>
+
+    <su.whs.widgets.ButtonR
+        android:id="@+id/dontLikeBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height64dp"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/buttonPaddings"
+        android:background="@drawable/blink_blue"
+        android:text="@string/rate_idislike"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/spBig" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/dontLikeBtn"
+        android:layout_centerHorizontal="true"
+        android:background="@color/dark"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <su.whs.widgets.ButtonR
+        android:id="@+id/rememberLaterBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/height64dp"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/buttonPaddings"
+        android:background="@drawable/blink_blue"
+        android:text="@string/rate_remember_later"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/spBig" />
+
+</RelativeLayout>

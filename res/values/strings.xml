@@ -25,4 +25,10 @@
 	<string name="n7">7</string>
 	<string name="n8">8</string>
 	<string name="n9">9</string>
+	
+	<!--  -->
+	<string name="rate_support_us">Support us!</string>
+	<string name="rate_ilike">I like</string>
+	<string name="rate_idislike">I don\'t like</string>
+	<string name="rate_remember_later">Remember Later</string>
 </resources>

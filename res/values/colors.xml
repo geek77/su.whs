@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="transparent_gray">#44000000</color>
-	<color name="transparent_gray_dark">#88000000</color>    
+	<color name="transparent_gray_dark">#88000000</color>
+	
+	 <color name="rose">#feece5</color>
+     <color name="rose_transparent">#11ffece5</color>
+     <color name="white">#ffffff</color>
+     <color name="lightblue">#3990c2</color>
+     <color name="blue">#236a8d</color>
+     <color name="transparent_blue">#44236a8d</color>
+     <color name="green">#5ac673</color>
+     <color name="red">#ef4237</color>
+     <color name="transparent_red">#44ef4237</color>
+     <color name="gray">#f0f0f0</color>
+     <color name="lightdark">#757575</color>
+     <color name="dark">#545454</color>
+     <color name="black">#000000</color>
+     <color name="splash2">#485969</color>
+     <color name="splash">#B1BCC5</color>
+     <color name="lightgray">#EFEDDE</color>
 </resources>
