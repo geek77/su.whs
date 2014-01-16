@@ -37,6 +37,7 @@ public class PincodeProtectedActivity extends FragmentActivity {
 		mRootView = (FrameLayout) super.findViewById(R.id.pincodeProtectedRoot);		
 		FragmentManager fm = this.getSupportFragmentManager();
 		mPincodeBox = (PincodeBox) fm.findFragmentById(R.id.pincodeBox);
+		
 		PackageManager pm = getPackageManager();
 		ApplicationInfo ai;
 		try {

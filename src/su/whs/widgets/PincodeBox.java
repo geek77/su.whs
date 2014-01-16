@@ -1,9 +1,12 @@
 package su.whs.widgets;
 
 import su.whs.R;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.text.Editable;
@@ -51,11 +54,19 @@ public class PincodeBox extends android.support.v4.app.Fragment {
 		super.onAttach(activity);
 	}
 	
+	@SuppressLint("NewApi")
+	@SuppressWarnings("deprecation")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.pinbox_widget, container, false);
 		labelView = (TextView) view.findViewById(R.id.lockLabel);
 		initializeInput();
+		if (Build.VERSION.SDK_INT<16) {
+			// view.setBackgroundDrawable(new ColorDrawable(0x81000000));
+		} else {
+			view.setBackground(new ColorDrawable(0xf8000000));
+		}
+		
 		return view;
 	}
 	
@@ -217,5 +228,4 @@ public class PincodeBox extends android.support.v4.app.Fragment {
 	public void clear() {
 		this.passwordView.setText("");
 	}
-	
 }

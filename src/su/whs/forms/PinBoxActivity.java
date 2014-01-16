@@ -6,15 +6,18 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class PinBoxActivity extends FragmentActivity implements PincodeBox.OnPincodeInputListener {
-	
+public abstract class PinBoxActivity extends FragmentActivity implements PincodeBox.OnPincodeInputListener {
+	private static final String TAG = "PinBoxActivity";
 	protected boolean isPasswordEntered = false;
 	private PincodeBox mPincodeBox;
 	private String mLabel = null;
@@ -41,25 +44,34 @@ public class PinBoxActivity extends FragmentActivity implements PincodeBox.OnPin
 		}
 	}
 		
+	@SuppressWarnings("deprecation")
 	@Override 
 	protected final void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+		} else {
+			WindowManager.LayoutParams lp = getWindow().getAttributes();  
+			lp.dimAmount=0.5f;
+			getWindow().setAttributes(lp);
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+			getWindow().setBackgroundDrawable(new ColorDrawable(0x7000000));
+		}
 		setContentView(R.layout.pincode_activity);
 		FragmentManager fm = getSupportFragmentManager();
 		mPincodeBox = (PincodeBox) fm.findFragmentById(R.id.fragment1);
+		mPincodeBox.clear();
+		isPasswordEntered = false;
 		configureThis(getIntent().getExtras());
 		designThis();
 	}
 	
 	@Override
-	protected void onStart() {
-		super.onStart();
-		mPincodeBox.clear();
-		isPasswordEntered = false;
+	public void onSaveInstanceState(Bundle sis) {
+		sis.putString("label", mLabel);
 	}
-
+	
 	@Override
 	public void onCorrectPincode() {
 		isPasswordEntered = true;
@@ -70,4 +82,22 @@ public class PinBoxActivity extends FragmentActivity implements PincodeBox.OnPin
 	public void onIncorrectPincode() {
 		isPasswordEntered = false;
 	}
+	
+	
+	@Override
+	public void onDestroy() {
+		Log.v(TAG,"onDestroy()");
+		super.onDestroy();
+	}
+	
+	@Override
+	public final void onBackPressed() {
+		onCancel();
+	}
+	
+	public final void clear() {
+		mPincodeBox.clear();
+	}
+	
+	public abstract void onCancel();
 }
