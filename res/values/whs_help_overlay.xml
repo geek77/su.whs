@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="whsHelpOverlay">
+        <attr name="screens" format="reference" localization="suggested" />
+        <attr name="mode" format="string" />
+        <attr name="nextButtonText" format="reference|string" />
+        <attr name="readyButtonText" format="reference|string" />
+    </declare-styleable>
+    <declare-styleable name="whsHelpScreen">
+        <attr name="highlight">
+            <enum name="rect" value="1"/>
+            <enum name="circle" value="2"/>
+        </attr>
+        <attr name="rectCornersRadius" format="float|reference"/>
+        <attr name="position">
+            <enum name="leftTop" value="1"/>
+            <enum name="leftBottom" value="2"/>
+            <enum name="leftAbove" value="3"/>
+            <enum name="leftBelow" value="4"/>
+            <enum name="rightTop" value="5"/>
+            <enum name="rightBottom" value="6"/>
+            <enum name="rightAbove" value="7"/>
+            <enum name="rightBelow" value="8"/>
+            <enum name="auto" value="0"/>
+        </attr>
+        <attr name="font" format="string"/>
+        <attr name="disclaimer" format="string|reference"/>
+        <attr name="textSize" format="float|integer|reference"/>
+        <attr name="widget" format="reference"/>
+    </declare-styleable>
+  
+</resources>

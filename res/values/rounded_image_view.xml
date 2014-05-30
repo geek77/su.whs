@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundedImageView">
+        <attr name="circleStrokeColor" format="integer|reference"></attr>
+        <attr name="circleStrokeWidth" format="integer|reference"></attr>
+        <attr name="roundedDrawable" format="reference"></attr>
+    </declare-styleable>
+    
+</resources>

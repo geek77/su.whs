@@ -31,4 +31,7 @@
 	<string name="rate_ilike">I like</string>
 	<string name="rate_idislike">I don\'t like</string>
 	<string name="rate_remember_later">Remember Later</string>
+	
+	<!-- help overlay -->
+	<string name="whs_s_next">Next</string>
 </resources>
